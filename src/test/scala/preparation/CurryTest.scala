@@ -8,4 +8,10 @@ class CurryTest extends AnyFunSuite{
     val curried = Curry.curry(f)
     assert(curried(1)(2) == 3)
   }
+
+  test("Curry.uncurry should return uncurried function") {
+    val f = (a: Int) => (b: Int) => a + b
+    val uncurried = Curry.uncurry(f)
+    assert(uncurried(1, 2) == 3)
+  }
 }
