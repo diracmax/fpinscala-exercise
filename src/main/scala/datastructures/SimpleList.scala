@@ -26,4 +26,9 @@ object SimpleList {
     case Cons(x, Cons(y, Cons(3, Cons(4, _)))) => x + y
     case _ => 101
   }
+
+  def tail[A](ls: SimpleList[A]): SimpleList[A] = ls match {
+    case Nil => Nil
+    case Cons(_, t) => t
+  }
 }
