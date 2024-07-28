@@ -18,4 +18,8 @@ class SimpleListTest extends AnyFunSuite{
   test("Exercise 3.2: List.tail should return the tail of the list") {
     assert(SimpleList.tail(SimpleList(1, 2, 3, 4, 5)) == SimpleList(2, 3, 4, 5))
   }
+
+  test("Exercise 3.3: List.setHead should return the list with the new head") {
+    assert(SimpleList.setHead(10, SimpleList(1, 2, 3, 4, 5)) == SimpleList(10, 2, 3, 4, 5))
+  }
 }

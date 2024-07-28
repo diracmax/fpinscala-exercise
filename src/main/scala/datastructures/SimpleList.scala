@@ -31,4 +31,9 @@ object SimpleList {
     case Nil => Nil
     case Cons(_, t) => t
   }
+
+  def setHead[A](head: A, sl:SimpleList[A]): SimpleList[A] = sl match {
+    case Nil => Cons(head, Nil)
+    case Cons(_, t) => Cons(head, t)
+  }
 }
