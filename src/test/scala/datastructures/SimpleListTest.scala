@@ -26,4 +26,8 @@ class SimpleListTest extends AnyFunSuite{
   test("Exercise 3.4: List.drop should return the list without the first n elements") {
     assert(SimpleList.drop(SimpleList(1, 2, 3, 4, 5), 2) == SimpleList(3, 4, 5))
   }
+
+  test("Exercise 3.5: List.dropWhile should return the list without the elements that satisfy the condition") {
+    assert(SimpleList.dropWhile(SimpleList(1, 2, 3, 4, 5), (a: Int) => a < 3) == SimpleList(3, 4, 5))
+  }
 }

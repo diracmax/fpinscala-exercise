@@ -45,4 +45,10 @@ object SimpleList {
       case Cons(_, t) => drop(t, n - 1)
     }
   }
+
+  @annotation.tailrec
+  def dropWhile[A](l: SimpleList[A], f: A => Boolean): SimpleList[A] = l match {
+    case Cons(h, t) if f(h) => dropWhile(t, f)
+    case _ => l
+  }
 }
