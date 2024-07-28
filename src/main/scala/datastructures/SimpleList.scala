@@ -51,4 +51,10 @@ object SimpleList {
     case Cons(h, t) if f(h) => dropWhile(t, f)
     case _ => l
   }
+
+  def init[A](l: SimpleList[A]): SimpleList[A] = l match {
+    case Nil => sys.error("init of empty list")
+    case Cons(_, Nil) => Nil
+    case Cons(h, t) => Cons(h, init(t))
+  }
 }
