@@ -36,4 +36,13 @@ object SimpleList {
     case Nil => Cons(head, Nil)
     case Cons(_, t) => Cons(head, t)
   }
+
+  @annotation.tailrec
+  def drop[A](l: SimpleList[A], n: Int): SimpleList[A] = {
+    if (n <= 0) l
+    else l match {
+      case Nil => Nil
+      case Cons(_, t) => drop(t, n - 1)
+    }
+  }
 }

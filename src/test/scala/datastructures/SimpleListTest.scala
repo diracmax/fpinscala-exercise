@@ -22,4 +22,8 @@ class SimpleListTest extends AnyFunSuite{
   test("Exercise 3.3: List.setHead should return the list with the new head") {
     assert(SimpleList.setHead(10, SimpleList(1, 2, 3, 4, 5)) == SimpleList(10, 2, 3, 4, 5))
   }
+
+  test("Exercise 3.4: List.drop should return the list without the first n elements") {
+    assert(SimpleList.drop(SimpleList(1, 2, 3, 4, 5), 2) == SimpleList(3, 4, 5))
+  }
 }
