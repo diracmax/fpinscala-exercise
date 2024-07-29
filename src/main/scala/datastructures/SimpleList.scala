@@ -65,4 +65,6 @@ object SimpleList {
     }
 
   val y: SimpleList[Int] = SimpleList.foldRight(SimpleList(1, 2, 3), Nil: SimpleList[Int])(Cons(_, _) )
+
+  def length[A](as: SimpleList[A]): Int = foldRight(as, 0)((_, acc) => acc + 1)
 }
