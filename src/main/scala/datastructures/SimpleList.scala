@@ -73,4 +73,10 @@ object SimpleList {
     case Nil => z
     case Cons(x, xs) => foldLeft(xs, f(z, x))(f)
   }
+
+  def sum2(ints: SimpleList[Int]): Int = foldLeft(ints, 0)(_ + _)
+
+  def product2(ds: SimpleList[Double]): Double = foldLeft(ds, 1.0)(_ * _)
+
+  def length2[A](as: SimpleList[A]): Int = foldLeft(as, 0)((acc, _) => acc + 1)
 }

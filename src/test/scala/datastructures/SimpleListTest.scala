@@ -50,4 +50,16 @@ class SimpleListTest extends AnyFunSuite{
   test("Exercise 3.10 foldLeft should return the correct value") {
     assert(SimpleList.foldLeft(SimpleList(1, 2, 3, 4, 5), 0)(_ + _) == 15)
   }
+
+  test("Exercise 3.11 sum should return the sum of the list") {
+    assert(SimpleList.sum2(SimpleList(1, 2, 3, 4, 5)) == 15)
+  }
+
+  test("Exercise 3.11 product should return the product of the list") {
+    assert(SimpleList.product2(SimpleList(1, 2, 3, 4, 5)) == 120)
+  }
+
+  test("Exercise 3.11 length should return the length of the list") {
+    assert(SimpleList.length2(SimpleList(1, 2, 3, 4, 5)) == 5)
+  }
 }
