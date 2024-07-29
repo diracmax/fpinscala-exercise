@@ -38,4 +38,8 @@ class SimpleListTest extends AnyFunSuite{
   test("List.foldRight should return the correct value") {
     assert(SimpleList.foldRight(SimpleList(1, 2, 3, 4, 5), 0)(_ + _) == 15)
   }
+
+  test("Exercise 3.8") {
+    assert(SimpleList.y == SimpleList(1, 2, 3))
+  }
 }

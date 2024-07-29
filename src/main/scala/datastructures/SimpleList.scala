@@ -63,4 +63,6 @@ object SimpleList {
       case Nil => z
       case Cons(x, xs) => f(x, foldRight(xs, z)(f))
     }
+
+  val y: SimpleList[Int] = SimpleList.foldRight(SimpleList(1, 2, 3), Nil: SimpleList[Int])(Cons(_, _) )
 }
