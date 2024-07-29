@@ -34,4 +34,8 @@ class SimpleListTest extends AnyFunSuite{
   test("Exercise 3.6: List.init should return the list without the last element") {
     assert(SimpleList.init(SimpleList(1, 2, 3, 4, 5)) == SimpleList(1, 2, 3, 4) )
   }
+
+  test("List.foldRight should return the correct value") {
+    assert(SimpleList.foldRight(SimpleList(1, 2, 3, 4, 5), 0)(_ + _) == 15)
+  }
 }
