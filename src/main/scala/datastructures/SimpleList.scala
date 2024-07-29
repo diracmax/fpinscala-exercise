@@ -67,4 +67,10 @@ object SimpleList {
   val y: SimpleList[Int] = SimpleList.foldRight(SimpleList(1, 2, 3), Nil: SimpleList[Int])(Cons(_, _) )
 
   def length[A](as: SimpleList[A]): Int = foldRight(as, 0)((_, acc) => acc + 1)
+
+  @annotation.tailrec
+  def foldLeft[A, B](as: SimpleList[A], z: B)(f: (B, A) => B): B = as match {
+    case Nil => z
+    case Cons(x, xs) => foldLeft(xs, f(z, x))(f)
+  }
 }
