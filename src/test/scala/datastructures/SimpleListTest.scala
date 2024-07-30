@@ -66,4 +66,8 @@ class SimpleListTest extends AnyFunSuite{
   test("Exercise 3.12 reverse should return the reversed list") {
     assert(SimpleList.reverse(SimpleList(1, 2, 3, 4, 5)) == SimpleList(5, 4, 3, 2, 1))
   }
+
+  test("Exercise 3.14 append should return the appended list") {
+    assert(SimpleList.append(SimpleList(1, 2, 3), SimpleList(4, 5)) == SimpleList(1, 2, 3, 4, 5))
+  }
 }

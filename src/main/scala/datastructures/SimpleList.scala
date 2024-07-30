@@ -81,4 +81,6 @@ object SimpleList {
   def length2[A](as: SimpleList[A]): Int = foldLeft(as, 0)((acc, _) => acc + 1)
 
   def reverse[A](as: SimpleList[A]): SimpleList[A] = foldLeft(as, Nil: SimpleList[A])((acc, h) => Cons(h, acc))
+
+  def append[A](a1: SimpleList[A], a2: SimpleList[A]): SimpleList[A] = foldRight(a1, a2)(Cons(_, _))
 }
