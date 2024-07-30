@@ -62,4 +62,8 @@ class SimpleListTest extends AnyFunSuite{
   test("Exercise 3.11 length should return the length of the list") {
     assert(SimpleList.length2(SimpleList(1, 2, 3, 4, 5)) == 5)
   }
+
+  test("Exercise 3.12 reverse should return the reversed list") {
+    assert(SimpleList.reverse(SimpleList(1, 2, 3, 4, 5)) == SimpleList(5, 4, 3, 2, 1))
+  }
 }
