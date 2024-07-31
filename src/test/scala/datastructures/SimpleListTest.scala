@@ -74,4 +74,8 @@ class SimpleListTest extends AnyFunSuite{
   test("Exercise 3.15 concat should return the concatenated list") {
     assert(SimpleList.concat(SimpleList(SimpleList(1, 2, 3), SimpleList(4, 5))) == SimpleList(1, 2, 3, 4, 5))
   }
+
+  test("Exercise 3.16 plus1 should return the list with 1 plus each element") {
+    assert(SimpleList.plus1(SimpleList(1, 2, 3, 4, 5)) == SimpleList(2, 3, 4, 5, 6))
+  }
 }

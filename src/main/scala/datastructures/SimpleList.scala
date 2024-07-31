@@ -85,4 +85,6 @@ object SimpleList {
   def append[A](a1: SimpleList[A], a2: SimpleList[A]): SimpleList[A] = foldRight(a1, a2)(Cons(_, _))
 
   def concat[A](ls: SimpleList[SimpleList[A]]): SimpleList[A] = foldRight(ls, Nil: SimpleList[A])(append)
+
+  def plus1(ls: SimpleList[Int]): SimpleList[Int] = foldRight(ls, Nil: SimpleList[Int])((h, t) => Cons(h + 1, t))
 }
