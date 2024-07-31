@@ -70,4 +70,8 @@ class SimpleListTest extends AnyFunSuite{
   test("Exercise 3.14 append should return the appended list") {
     assert(SimpleList.append(SimpleList(1, 2, 3), SimpleList(4, 5)) == SimpleList(1, 2, 3, 4, 5))
   }
+
+  test("Exercise 3.15 concat should return the concatenated list") {
+    assert(SimpleList.concat(SimpleList(SimpleList(1, 2, 3), SimpleList(4, 5))) == SimpleList(1, 2, 3, 4, 5))
+  }
 }
