@@ -78,4 +78,8 @@ class SimpleListTest extends AnyFunSuite{
   test("Exercise 3.16 plus1 should return the list with 1 plus each element") {
     assert(SimpleList.plus1(SimpleList(1, 2, 3, 4, 5)) == SimpleList(2, 3, 4, 5, 6))
   }
+
+  test("Exercise 3.17 doubleToString should return the list with each element converted to string") {
+    assert(SimpleList.doubleToString(SimpleList(1.0, 2.0, 3.0, 4.0, 5.0)) == SimpleList("1.0", "2.0", "3.0", "4.0", "5.0"))
+  }
 }
