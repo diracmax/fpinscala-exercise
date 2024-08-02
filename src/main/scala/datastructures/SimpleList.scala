@@ -89,4 +89,6 @@ object SimpleList {
   def plus1(ls: SimpleList[Int]): SimpleList[Int] = foldRight(ls, Nil: SimpleList[Int])((h, t) => Cons(h + 1, t))
 
   def doubleToString(ls: SimpleList[Double]): SimpleList[String] = foldRight(ls, Nil: SimpleList[String])((h, t) => Cons(h.toString, t))
+
+  def map[A, B](as: SimpleList[A])(f: A => B): SimpleList[B] = foldRight(as, Nil: SimpleList[B])((h, t) => Cons(f(h), t))
 }

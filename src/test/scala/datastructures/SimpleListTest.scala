@@ -82,4 +82,8 @@ class SimpleListTest extends AnyFunSuite{
   test("Exercise 3.17 doubleToString should return the list with each element converted to string") {
     assert(SimpleList.doubleToString(SimpleList(1.0, 2.0, 3.0, 4.0, 5.0)) == SimpleList("1.0", "2.0", "3.0", "4.0", "5.0"))
   }
+
+  test("Exercise 3.18 map should return the list with each element transformed by the function") {
+    assert(SimpleList.map(SimpleList(1, 2, 3, 4, 5))(_ + 1) == SimpleList(2, 3, 4, 5, 6))
+  }
 }
