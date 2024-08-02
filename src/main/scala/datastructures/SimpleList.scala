@@ -97,4 +97,6 @@ object SimpleList {
     case Cons(x, xs) if f(x) => Cons(x, filter(xs)(f))
     case Cons(_, xs) => filter(xs)(f)
   }
+
+  def flatMap[A, B](as: SimpleList[A])(f: A => SimpleList[B]): SimpleList[B] = foldRight(as, Nil: SimpleList[B])((h, t) => append(f(h), t))
 }
