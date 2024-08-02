@@ -94,4 +94,8 @@ class SimpleListTest extends AnyFunSuite{
   test("Exercise 3.20 flatMap should return the list with each element transformed by the function") {
     assert(SimpleList.flatMap(SimpleList(1, 2, 3))(i => SimpleList(i, i)) == SimpleList(1, 1, 2, 2, 3, 3))
   }
+
+  test("Exercise 3.21 filter2 should return the list with elements that satisfy the condition") {
+    assert(SimpleList.filter2(SimpleList(1, 2, 3, 4, 5))(_ % 2 == 0) == SimpleList(2, 4))
+  }
 }

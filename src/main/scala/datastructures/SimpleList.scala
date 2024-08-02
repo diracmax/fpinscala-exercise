@@ -99,4 +99,6 @@ object SimpleList {
   }
 
   def flatMap[A, B](as: SimpleList[A])(f: A => SimpleList[B]): SimpleList[B] = foldRight(as, Nil: SimpleList[B])((h, t) => append(f(h), t))
+
+  def filter2[A](as: SimpleList[A])(f: A => Boolean): SimpleList[A] = flatMap(as)(x => if (f(x)) SimpleList(x) else Nil)
 }
