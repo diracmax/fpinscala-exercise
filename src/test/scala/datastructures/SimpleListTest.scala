@@ -86,4 +86,8 @@ class SimpleListTest extends AnyFunSuite{
   test("Exercise 3.18 map should return the list with each element transformed by the function") {
     assert(SimpleList.map(SimpleList(1, 2, 3, 4, 5))(_ + 1) == SimpleList(2, 3, 4, 5, 6))
   }
+
+  test("Exercise 3.19 filter should return the list with elements that satisfy the condition") {
+    assert(SimpleList.filter(SimpleList(1, 2, 3, 4, 5))(_ % 2 == 0) == SimpleList(2, 4))
+  }
 }

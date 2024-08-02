@@ -91,4 +91,10 @@ object SimpleList {
   def doubleToString(ls: SimpleList[Double]): SimpleList[String] = foldRight(ls, Nil: SimpleList[String])((h, t) => Cons(h.toString, t))
 
   def map[A, B](as: SimpleList[A])(f: A => B): SimpleList[B] = foldRight(as, Nil: SimpleList[B])((h, t) => Cons(f(h), t))
+
+  def filter[A](as: SimpleList[A])(f: A => Boolean): SimpleList[A] = as match {
+    case Nil => Nil
+    case Cons(x, xs) if f(x) => Cons(x, filter(xs)(f))
+    case Cons(_, xs) => filter(xs)(f)
+  }
 }
