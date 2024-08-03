@@ -20,4 +20,9 @@ class TreeTest extends AnyFunSuite {
     assert(Tree.depth(Branch(Branch(Leaf(1), Leaf(2)), Leaf(3))) == 2)
     assert(Tree.depth(Branch(Branch(Leaf(1), Branch(Leaf(1), Leaf(2))), Leaf(3))) == 3)
   }
+
+  test("Exercise 3.28: map should return a new tree with the function applied to each element") {
+    assert(Tree.map(Branch(Leaf(1), Leaf(2)))(_ + 1) == Branch(Leaf(2), Leaf(3)))
+    assert(Tree.map(Branch(Branch(Leaf(1), Leaf(2)), Leaf(3)))(_ + 1) == Branch(Branch(Leaf(2), Leaf(3)), Leaf(4)))
+  }
 }
