@@ -8,4 +8,10 @@ class TreeTest extends AnyFunSuite {
     assert(Tree.size(Branch(Branch(Leaf(1), Leaf(2)), Leaf(3))) == 5)
     assert(Tree.size(Branch(Branch(Leaf(1), Leaf(2)), Branch(Leaf(1), Leaf(2)))) == 7)
   }
+
+  test("Exercise 3.26: maximum should return the maximum value in the tree") {
+    assert(Tree.maximum(Branch(Leaf(1), Leaf(2))) == 2)
+    assert(Tree.maximum(Branch(Branch(Leaf(1), Leaf(2)), Leaf(3))) == 3)
+    assert(Tree.maximum(Branch(Branch(Leaf(1), Leaf(2)), Branch(Leaf(3), Leaf(4)))) == 4)
+  }
 }
