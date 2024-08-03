@@ -25,4 +25,11 @@ class TreeTest extends AnyFunSuite {
     assert(Tree.map(Branch(Leaf(1), Leaf(2)))(_ + 1) == Branch(Leaf(2), Leaf(3)))
     assert(Tree.map(Branch(Branch(Leaf(1), Leaf(2)), Leaf(3)))(_ + 1) == Branch(Branch(Leaf(2), Leaf(3)), Leaf(4)))
   }
+
+  test("Exercise 3.29: fold should return the correct value") {
+    assert(Tree.size2(Branch(Leaf(1), Leaf(2))) == 3)
+    assert(Tree.maximum2(Branch(Leaf(1), Leaf(2))) == 2)
+    assert(Tree.depth2(Branch(Leaf(1), Leaf(2))) == 1)
+    assert(Tree.map2(Branch(Leaf(1), Leaf(2)))(_ + 1) == Branch(Leaf(2), Leaf(3)))
+  }
 }
