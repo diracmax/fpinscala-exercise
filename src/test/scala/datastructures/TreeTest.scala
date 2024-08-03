@@ -14,4 +14,10 @@ class TreeTest extends AnyFunSuite {
     assert(Tree.maximum(Branch(Branch(Leaf(1), Leaf(2)), Leaf(3))) == 3)
     assert(Tree.maximum(Branch(Branch(Leaf(1), Leaf(2)), Branch(Leaf(3), Leaf(4)))) == 4)
   }
+
+  test("Exercise 3.27: depth should return the maximum path length from the root of the tree to any leaf") {
+    assert(Tree.depth(Branch(Leaf(1), Leaf(2))) == 1)
+    assert(Tree.depth(Branch(Branch(Leaf(1), Leaf(2)), Leaf(3))) == 2)
+    assert(Tree.depth(Branch(Branch(Leaf(1), Branch(Leaf(1), Leaf(2))), Leaf(3))) == 3)
+  }
 }
