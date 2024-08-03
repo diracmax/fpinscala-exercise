@@ -98,4 +98,8 @@ class SimpleListTest extends AnyFunSuite{
   test("Exercise 3.21 filter2 should return the list with elements that satisfy the condition") {
     assert(SimpleList.filter2(SimpleList(1, 2, 3, 4, 5))(_ % 2 == 0) == SimpleList(2, 4))
   }
+
+  test("Exercise 3.22 addPairwise should return the list with elements added pairwise") {
+    assert(SimpleList.addPairwise(SimpleList(1, 2, 3), SimpleList(4, 5, 6)) == SimpleList(5, 7, 9))
+  }
 }
