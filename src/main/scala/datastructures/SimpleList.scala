@@ -107,4 +107,10 @@ object SimpleList {
     case (_, Nil) => Nil
     case (Cons(ah, at), Cons(bh, bt)) => Cons(ah + bh, addPairwise(at, bt))
   }
+
+  def zipWith[A](a: SimpleList[A], b: SimpleList[A])(f: (A, A) => A): SimpleList[A] = (a, b) match {
+    case (Nil, _) => Nil
+    case (_, Nil) => Nil
+    case (Cons(ah, at), Cons(bh, bt)) => Cons(f(ah, bh), zipWith(at, bt)(f))
+  }
 }

@@ -2,7 +2,7 @@ package datastructures
 
 import org.scalatest.funsuite.AnyFunSuite
 
-class SimpleListTest extends AnyFunSuite{
+class SimpleListTest extends AnyFunSuite {
   test("sum should return sum of the list") {
     assert(SimpleList.sum(SimpleList(1, 2, 3, 4, 5)) == 15)
   }
@@ -32,7 +32,7 @@ class SimpleListTest extends AnyFunSuite{
   }
 
   test("Exercise 3.6: init should return the list without the last element") {
-    assert(SimpleList.init(SimpleList(1, 2, 3, 4, 5)) == SimpleList(1, 2, 3, 4) )
+    assert(SimpleList.init(SimpleList(1, 2, 3, 4, 5)) == SimpleList(1, 2, 3, 4))
   }
 
   test("foldRight should return the correct value") {
@@ -101,5 +101,12 @@ class SimpleListTest extends AnyFunSuite{
 
   test("Exercise 3.22 addPairwise should return the list with elements added pairwise") {
     assert(SimpleList.addPairwise(SimpleList(1, 2, 3), SimpleList(4, 5, 6)) == SimpleList(5, 7, 9))
+  }
+
+  test("Exercise 3.23 zipWith should return the list with elements transformed by the function") {
+    assert(SimpleList.zipWith(SimpleList(1, 2, 3), SimpleList(4, 5, 6))(_ + _) == SimpleList(5, 7, 9))
+    assert(SimpleList.zipWith(SimpleList(1, 2, 3), SimpleList(4, 5, 6))(_ * _) == SimpleList(4, 10, 18))
+    assert(SimpleList.zipWith(SimpleList(1, 2, 3), SimpleList(4, 5))(_ + _) == SimpleList(5, 7))
+    assert(SimpleList.zipWith(SimpleList(1, 2), SimpleList(4, 5, 6))(_ + _) == SimpleList(5, 7))
   }
 }
