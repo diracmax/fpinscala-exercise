@@ -1,5 +1,6 @@
 package errorhandling
 
+import scala.{Option => _, Some => _, None => _}
 import org.scalatest.funsuite.AnyFunSuite
 
 class OptionTest extends AnyFunSuite {
@@ -27,5 +28,10 @@ class OptionTest extends AnyFunSuite {
     assert(Some(1).filter(_ == 1) == Some(1))
     assert(Some(1).filter(_ == 2) == None)
     assert(None.filter((a: Int) => a == 1) == None)
+  }
+
+  test("Exercise 4.2: variance should return the variance of the sequence") {
+    assert(Option.variance(Seq(1, 2, 3, 4, 5)) == Some(2.0))
+    assert(Option.variance(Seq()) == None)
   }
 }
