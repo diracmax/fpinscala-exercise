@@ -34,4 +34,10 @@ class OptionTest extends AnyFunSuite {
     assert(Option.variance(Seq(1, 2, 3, 4, 5)) == Some(2.0))
     assert(Option.variance(Seq()) == None)
   }
+
+  test("map2 should return Some with the function applied to the values") {
+    assert(Option.map2(Some(1), Some(2))(_ + _) == Some(3))
+    assert(Option.map2(Some(1), None)(_ + _) == None)
+    assert(Option.map2(None, Some(2))((a: Int, b: Int) => a + b) == None)
+  }
 }
