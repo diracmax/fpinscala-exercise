@@ -40,4 +40,10 @@ class OptionTest extends AnyFunSuite {
     assert(Option.map2(Some(1), None)(_ + _) == None)
     assert(Option.map2(None, Some(2))((a: Int, b: Int) => a + b) == None)
   }
+
+  test("sequence should return Some with the list of values if all values are Some") {
+    assert(Option.sequence(List(Some(1), Some(2), Some(3))) == Some(List(1, 2, 3)))
+    assert(Option.sequence(List(Some(1), None, Some(3))) == None)
+    assert(Option.sequence(Nil) == Some(Nil))
+  }
 }
