@@ -46,4 +46,10 @@ class OptionTest extends AnyFunSuite {
     assert(Option.sequence(List(Some(1), None, Some(3))) == None)
     assert(Option.sequence(Nil) == Some(Nil))
   }
+
+  test("Exercise 4.5 traverse should return Some with the list of values if all values are Some") {
+    assert(Option.traverse(List(1, 2, 3))(a => Some(a + 1)) == Some(List(2, 3, 4)))
+    assert(Option.traverse(List(1, 2, 3))(a => if (a % 2 == 0) Some(a) else None) == None)
+    assert(Option.traverse(Nil)(Some(_)) == Some(Nil))
+  }
 }
