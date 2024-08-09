@@ -24,4 +24,17 @@ class EitherTest extends AnyFunSuite {
     assert((Left("error"): Either[String, Int]).map2(Right(2))((a: Int, b: Int) => a + b) == Left("error"))
     assert((Left("error1"): Either[String, Int]).map2(Left("error2"): Either[String, Int])((a: Int, b: Int) => a + b) == Left("error1"))
   }
+
+  test("Exercise 4.7 sequence should return Right with the list of values if all values are Right") {
+    assert(Either.sequence(List(Right(1), Right(2), Right(3))) == Right(List(1, 2, 3)))
+    assert(Either.sequence(List(Right(1), Left("error"), Right(3))) == Left("error"))
+    assert(Either.sequence(List(Right(1), Left("error1"), Left("error2"))) == Left("error1"))
+    assert(Either.sequence(Nil) == Right(Nil))
+  }
+
+  test("Exercise 4.7 traverse should return Right with the list of values if all values are Right") {
+    assert(Either.traverse(List(1, 2, 3))(a => Right(a + 1)) == Right(List(2, 3, 4)))
+    assert(Either.traverse(List(1, 2, 3))(a => if (a % 2 == 0) Right(a) else Left("error")) == Left("error"))
+    assert(Either.traverse(Nil)(Right(_)) == Right(Nil))
+  }
 }
