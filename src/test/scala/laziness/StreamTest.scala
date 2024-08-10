@@ -27,4 +27,14 @@ class StreamTest extends AnyFunSuite {
     assert(Stream(1, 2, 3, 4, 5).takeWhile(_ < 1).toList == Nil)
     assert(Stream[Int]().takeWhile(_ < 0).toList == Nil)
   }
+
+  test("Exercise 5.4 forAll should return true if all elements satisfy the condition") {
+    assert(Stream(1, 2, 3, 4, 5).forAll(_ < 6))
+    assert(!Stream(1, 2, 3, 4, 5).forAll(_ < 5))
+    assert(!Stream(1, 2, 3, 4, 5).forAll(_ < 4))
+    assert(!Stream(1, 2, 3, 4, 5).forAll(_ < 3))
+    assert(!Stream(1, 2, 3, 4, 5).forAll(_ < 2))
+    assert(!Stream(1, 2, 3, 4, 5).forAll(_ < 1))
+    assert(Stream[Int]().forAll(_ < 0))
+  }
 }
