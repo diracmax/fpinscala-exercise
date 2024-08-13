@@ -29,6 +29,8 @@ sealed trait Stream[+A] {
   }
 
   def forAll(p: A => Boolean): Boolean = foldRight(true)((x, y) => p(x) && y)
+
+  def takeWhile2(p: A => Boolean): Stream[A] = foldRight(Empty: Stream[A])((x, y) => if (p(x)) Cons(() => x, () => y) else Empty)
 }
 case object Empty extends Stream[Nothing]
 case class Cons[+A](h: () => A, t: () => Stream[A]) extends Stream[A]

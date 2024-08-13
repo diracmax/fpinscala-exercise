@@ -37,4 +37,11 @@ class StreamTest extends AnyFunSuite {
     assert(!Stream(1, 2, 3, 4, 5).forAll(_ < 1))
     assert(Stream[Int]().forAll(_ < 0))
   }
+
+  test("Exercise 5.5 takeWhile2 should return the stream while the condition is satisfied") {
+    assert(Stream(1, 2, 3, 4, 5).takeWhile2(_ < 4).toList == List(1, 2, 3))
+    assert(Stream(1, 2, 3, 4, 5).takeWhile2(_ < 6).toList == List(1, 2, 3, 4, 5))
+    assert(Stream(1, 2, 3, 4, 5).takeWhile2(_ < 1).toList == Nil)
+    assert(Stream[Int]().takeWhile2(_ < 0).toList == Nil)
+  }
 }
