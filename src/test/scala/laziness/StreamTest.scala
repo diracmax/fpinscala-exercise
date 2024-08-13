@@ -44,4 +44,26 @@ class StreamTest extends AnyFunSuite {
     assert(Stream(1, 2, 3, 4, 5).takeWhile2(_ < 1).toList == Nil)
     assert(Stream[Int]().takeWhile2(_ < 0).toList == Nil)
   }
+
+  test("Exercise 5.7 map should return the stream with the function applied to the values") {
+    assert(Stream(1, 2, 3).map(_ + 1).toList == List(2, 3, 4))
+    assert(Stream[Int]().map(_ + 1).toList == Nil)
+  }
+
+  test("Exercise 5.7 filter should return the stream with the values that satisfy the condition") {
+    assert(Stream(1, 2, 3, 4, 5).filter(_ % 2 == 0).toList == List(2, 4))
+    assert(Stream(1, 2, 3, 4, 5).filter(_ % 2 == 1).toList == List(1, 3, 5))
+    assert(Stream[Int]().filter(_ % 2 == 0).toList == Nil)
+  }
+
+  test("Exercise 5.7 append should return the stream with the appended stream") {
+    assert(Stream(1, 2, 3).append(Stream(4, 5)).toList == List(1, 2, 3, 4, 5))
+    assert(Stream(1, 2, 3).append(Stream[Int]()).toList == List(1, 2, 3))
+    assert(Stream[Int]().append(Stream(4, 5)).toList == List(4, 5))
+  }
+
+  test("Exercise 5.7 flatMap should return the stream with the function applied to the values") {
+    assert(Stream(1, 2, 3).flatMap(a => Stream(a, a)).toList == List(1, 1, 2, 2, 3, 3))
+    assert(Stream[Int]().flatMap(a => Stream(a, a)).toList == Nil)
+  }
 }
