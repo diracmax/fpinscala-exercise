@@ -65,4 +65,9 @@ object Stream {
   def from(n: Int): Stream[Int] = cons(n, from(n+1))
 
   def fibs(): Stream[Int] = from(0).map(Fibonacci.fib)
+
+  def unfold[A, S](z: S)(f: S => Option[(A, S)]): Stream[A] = f(z) match {
+    case Some((a, s)) => cons(a, unfold(s)(f))
+    case None => Empty
+  }
 }

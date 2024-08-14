@@ -81,4 +81,10 @@ class StreamTest extends AnyFunSuite {
     assert(Stream.fibs().take(7).toList == List(0, 1, 1, 2, 3, 5, 8))
     assert(Stream.fibs().take(0).toList == Nil)
   }
+
+  test("Exercise 5.11 unfold should return the stream with the values from the start") {
+    assert(Stream.unfold(1)(s => Some(s, s + 1)).take(3).toList == List(1, 2, 3))
+    assert(Stream.unfold(1)(s => if (s <= 3) Some(s, s + 1) else None).take(5).toList == List(1, 2, 3))
+    assert(Stream.unfold(1)(s => Some(s, s + 1)).take(0).toList == Nil)
+  }
 }
