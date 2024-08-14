@@ -71,4 +71,9 @@ class StreamTest extends AnyFunSuite {
     assert(Stream.constant(1).take(3).toList == List(1, 1, 1))
     assert(Stream.constant(1).take(0).toList == Nil)
   }
+
+  test("Exercise 5.9 from should return the stream with the values from the start") {
+    assert(Stream.from(1).take(3).toList == List(1, 2, 3))
+    assert(Stream.from(1).take(0).toList == Nil)
+  }
 }
