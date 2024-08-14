@@ -66,4 +66,9 @@ class StreamTest extends AnyFunSuite {
     assert(Stream(1, 2, 3).flatMap(a => Stream(a, a)).toList == List(1, 1, 2, 2, 3, 3))
     assert(Stream[Int]().flatMap(a => Stream(a, a)).toList == Nil)
   }
+
+  test("Exercise 5.8 constant should return the stream with the constant value") {
+    assert(Stream.constant(1).take(3).toList == List(1, 1, 1))
+    assert(Stream.constant(1).take(0).toList == Nil)
+  }
 }
