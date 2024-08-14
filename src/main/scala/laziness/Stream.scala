@@ -1,5 +1,7 @@
 package laziness
 
+import preparation.Fibonacci
+
 import scala.collection.immutable.{Stream => _}
 
 sealed trait Stream[+A] {
@@ -61,4 +63,6 @@ object Stream {
   }
 
   def from(n: Int): Stream[Int] = cons(n, from(n+1))
+
+  def fibs(): Stream[Int] = from(0).map(Fibonacci.fib)
 }

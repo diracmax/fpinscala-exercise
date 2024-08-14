@@ -76,4 +76,9 @@ class StreamTest extends AnyFunSuite {
     assert(Stream.from(1).take(3).toList == List(1, 2, 3))
     assert(Stream.from(1).take(0).toList == Nil)
   }
+
+  test("Exercise 5.10 fib should return the stream with the Fibonacci sequence") {
+    assert(Stream.fibs().take(7).toList == List(0, 1, 1, 2, 3, 5, 8))
+    assert(Stream.fibs().take(0).toList == Nil)
+  }
 }
