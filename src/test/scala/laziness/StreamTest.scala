@@ -87,4 +87,24 @@ class StreamTest extends AnyFunSuite {
     assert(Stream.unfold(1)(s => if (s <= 3) Some(s, s + 1) else None).take(5).toList == List(1, 2, 3))
     assert(Stream.unfold(1)(s => Some(s, s + 1)).take(0).toList == Nil)
   }
+
+  test("Exercise 5.12 fibs2 should return the stream with the Fibonacci sequence") {
+    assert(Stream.fibs2().take(7).toList == List(0, 1, 1, 2, 3, 5, 8))
+    assert(Stream.fibs2().take(0).toList == Nil)
+  }
+
+  test("Exercise 5.12 from2 should return the stream with the values from the start") {
+    assert(Stream.from2(1).take(3).toList == List(1, 2, 3))
+    assert(Stream.from2(1).take(0).toList == Nil)
+  }
+
+  test("Exercise 5.12 constant2 should return the stream with the constant value") {
+    assert(Stream.constant2(2).take(3).toList == List(2, 2, 2))
+    assert(Stream.constant2(1).take(0).toList == Nil)
+  }
+
+  test("Exercise 5.12 ones2 should return the stream with the constant value") {
+    assert(Stream.ones2().take(3).toList == List(1, 1, 1))
+    assert(Stream.ones2().take(0).toList == Nil)
+  }
 }

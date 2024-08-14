@@ -70,4 +70,12 @@ object Stream {
     case Some((a, s)) => cons(a, unfold(s)(f))
     case None => Empty
   }
+
+  def fibs2(): Stream[Int] = unfold(0)(x => Some((Fibonacci.fib(x), x+1)))
+
+  def from2(n: Int): Stream[Int] = unfold(n)(x => Some((x, x+1)))
+
+  def constant2[A](a: A): Stream[A] = unfold(a)(x => Some((x, x)))
+
+  def ones2(): Stream[Int] = unfold(1)(_ => Some((1, 1)))
 }
