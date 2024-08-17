@@ -109,7 +109,31 @@ class StreamTest extends AnyFunSuite {
   }
 
   test("Exercise 5.13 mapWithUnfold should return the stream with the function applied to the values") {
-    assert(Stream(1, 2, 3).mapWithUnfold(_ + 1).toList == List(2, 3, 4))
-    assert(Stream[Int]().mapWithUnfold(_ + 1).toList == Nil)
+    assert(Stream(1, 2, 3).mapViaUnfold(_ + 1).toList == List(2, 3, 4))
+    assert(Stream[Int]().mapViaUnfold(_ + 1).toList == Nil)
+  }
+
+  test("Exercise 5.13 takeWithUnfold should return the first n values") {
+    assert(Stream(1, 2, 3).takeViaUnfold(2).toList == List(1, 2))
+    assert(Stream(1, 2, 3).takeViaUnfold(4).toList == List(1, 2, 3))
+    assert(Stream(1, 2, 3).takeViaUnfold(0).toList == Nil)
+  }
+
+  test("Exercise 5.13 takeWhileWithUnfold should return the stream while the condition is satisfied") {
+    assert(Stream(1, 2, 3, 4, 5).takeWhileViaUnfold(_ < 4).toList == List(1, 2, 3))
+    assert(Stream(1, 2, 3, 4, 5).takeWhileViaUnfold(_ < 6).toList == List(1, 2, 3, 4, 5))
+    assert(Stream(1, 2, 3, 4, 5).takeWhileViaUnfold(_ < 1).toList == Nil)
+    assert(Stream[Int]().takeWhileViaUnfold(_ < 0).toList == Nil)
+  }
+
+  test("Exercise 5.13 zipWith should return the stream with") {
+    assert(Stream.zipWith(Stream(1, 2, 3), Stream(4, 5, 6))(_ + _).toList == List(5, 7, 9))
+    assert(Stream.zipWith(Stream(1, 2), Stream(4, 5, 6))(_ + _).toList == List(5, 7))
+  }
+
+  test("Exercise 5.13 zipAll should return the stream with the function applied") {
+    assert(Stream(1, 2, 3, 4).zipAll(Stream(5, 6)).toList == List((Some(1), Some(5)), (Some(2), Some(6)), (Some(3), None), (Some(4), None)))
+    assert(Stream(1, 2).zipAll(Stream(5, 6, 7)).toList == List((Some(1), Some(5)), (Some(2), Some(6)), (None, Some(7))))
+    assert(Stream(1, 2, 3).zipAll(Stream[Int]()).toList == List((Some(1), None), (Some(2), None), (Some(3), None)))
   }
 }
