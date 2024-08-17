@@ -11,4 +11,13 @@ case class SimpleRNG(seed: Long) extends RNG {
     val n = (newSeed >>> 16).toInt
     (n, nextRNG)
   }
+
+  def nonNegativeInt(rng: RNG): (Int, RNG) = {
+    val (newInt, newRNG) = rng.nextInt
+    if (newInt < 0) {
+      (-(newInt+1), newRNG)
+    } else {
+      (newInt, newRNG)
+    }
+  }
 }
