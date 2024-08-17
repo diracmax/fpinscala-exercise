@@ -1,5 +1,6 @@
 package laziness
 
+import laziness.Stream.unfold
 import preparation.Fibonacci
 
 import scala.collection.immutable.{Stream => _}
@@ -35,6 +36,11 @@ sealed trait Stream[+A] {
   def takeWhile2(p: A => Boolean): Stream[A] = foldRight(Empty: Stream[A])((x, y) => if (p(x)) Cons(() => x, () => y) else Empty)
 
   def map[B](f: A => B): Stream[B] = foldRight(Empty: Stream[B])((x, y) => Cons(() => f(x), () => y))
+
+  def mapWithUnfold[B](f: A => B): Stream[B] = unfold(this) {
+    case Cons(h, t) => Some((f(h()), t()))
+    case Empty => None
+  }
 
   def filter(f: A => Boolean): Stream[A] = foldRight(Empty: Stream[A])((x, y) => if (f(x)) Cons(() => x, () => y) else y)
 

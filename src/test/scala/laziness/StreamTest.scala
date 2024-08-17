@@ -107,4 +107,9 @@ class StreamTest extends AnyFunSuite {
     assert(Stream.ones2().take(3).toList == List(1, 1, 1))
     assert(Stream.ones2().take(0).toList == Nil)
   }
+
+  test("Exercise 5.13 mapWithUnfold should return the stream with the function applied to the values") {
+    assert(Stream(1, 2, 3).mapWithUnfold(_ + 1).toList == List(2, 3, 4))
+    assert(Stream[Int]().mapWithUnfold(_ + 1).toList == Nil)
+  }
 }
