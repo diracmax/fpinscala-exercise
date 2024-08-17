@@ -1,5 +1,7 @@
 package state
 
+import scala.math.abs
+
 trait RNG {
   def nextInt: (Int, RNG)
 }
@@ -19,5 +21,10 @@ case class SimpleRNG(seed: Long) extends RNG {
     } else {
       (newInt, newRNG)
     }
+  }
+
+  def double(rng: RNG): (Double, RNG) = {
+    val (n, newRNG) = rng.nextInt
+    (abs(n).toDouble / Int.MaxValue, newRNG)
   }
 }
