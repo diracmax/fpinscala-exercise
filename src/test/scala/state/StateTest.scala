@@ -50,4 +50,14 @@ class StateTest extends AnyFunSuite {
     assert(d5 >= 0.0 && d5 < 1.0)
     assert(d6 >= 0.0 && d6 < 1.0)
   }
+
+  test("Exercise 6.4 ints should return a list of random integers") {
+    val rng = SimpleRNG(42)
+    val (l1, rng2) = rng.ints(5)(rng)
+    assert(l1 == List(16159453, -1281479697, -340305902, -2015756020, 1770001318))
+    println(l1)
+    val (l2, _) = rng.ints(5)(rng2)
+    assert(l2.length == 5)
+    assert(l2 == List(-1934589059, 1015914512, -1163632441, -94901159, 1837487774))
+  }
 }

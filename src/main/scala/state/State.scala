@@ -46,4 +46,13 @@ case class SimpleRNG(seed: Long) extends RNG {
     val (d3, r3) = double(r2)
     ((d1, d2, d3), r3)
   }
+
+  def ints(count: Int)(rng: RNG): (List[Int], RNG) =
+    if (count > 0) {
+      val (n, newRNG) = rng.nextInt
+      val (l, r) = ints(count - 1)(newRNG)
+      (n :: l, r)
+    } else {
+      (Nil, rng)
+    }
 }
