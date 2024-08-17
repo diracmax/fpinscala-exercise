@@ -18,4 +18,36 @@ class StateTest extends AnyFunSuite {
     val (n2, _) = rng.double(rng2)
     assert(n2 >= 0.0 && n2 < 1.0)
   }
+
+  test("Exercise 6.3 intDouble should return a pair of integer and double") {
+    val rng = SimpleRNG(42)
+    val ((i1, d1), rng2) = rng.intDouble(rng)
+    assert(i1 >= Int.MinValue && i1 <= Int.MaxValue)
+    assert(d1 >= 0.0 && d1 < 1.0)
+    val ((i2, d2), _) = rng.intDouble(rng2)
+    assert(i2 >= Int.MinValue && i2 <= Int.MaxValue)
+    assert(d2 >= 0.0 && d2 < 1.0)
+  }
+
+  test("Exercise 6.3 doubleInt should return a pair of double and integer") {
+    val rng = SimpleRNG(42)
+    val ((d1, i1), rng2) = rng.doubleInt(rng)
+    assert(i1 >= Int.MinValue && i1 <= Int.MaxValue)
+    assert(d1 >= 0.0 && d1 < 1.0)
+    val ((d2, i2), _) = rng.doubleInt(rng2)
+    assert(i2 >= Int.MinValue && i2 <= Int.MaxValue)
+    assert(d2 >= 0.0 && d2 < 1.0)
+  }
+
+  test("Exercise 6.3 double3 should return a triple of doubles") {
+    val rng = SimpleRNG(42)
+    val ((d1, d2, d3), rng2) = rng.double3(rng)
+    assert(d1 >= 0.0 && d1 < 1.0)
+    assert(d2 >= 0.0 && d2 < 1.0)
+    assert(d3 >= 0.0 && d3 < 1.0)
+    val ((d4, d5, d6), _) = rng.double3(rng2)
+    assert(d4 >= 0.0 && d4 < 1.0)
+    assert(d5 >= 0.0 && d5 < 1.0)
+    assert(d6 >= 0.0 && d6 < 1.0)
+  }
 }
