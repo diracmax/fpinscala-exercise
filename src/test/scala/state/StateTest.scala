@@ -60,4 +60,12 @@ class StateTest extends AnyFunSuite {
     assert(l2.length == 5)
     assert(l2 == List(-1934589059, 1015914512, -1163632441, -94901159, 1837487774))
   }
+
+  test("Exercise 6.5 doubleViaMap should return a double between 0 and 1") {
+    val rng = SimpleRNG(42)
+    val (n1, rng2) = RNG.doubleViaMap(rng)
+    assert(n1 >= 0.0 && n1 < 1.0)
+    val (n2, _) = RNG.doubleViaMap(rng)
+    assert(n2 >= 0.0 && n2 < 1.0)
+  }
 }
