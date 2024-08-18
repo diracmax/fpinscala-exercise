@@ -68,4 +68,14 @@ class StateTest extends AnyFunSuite {
     val (n2, _) = RNG.doubleViaMap(rng)
     assert(n2 >= 0.0 && n2 < 1.0)
   }
+
+  test("Exercise 6.6 map2 should return a pair of values") {
+    val rng = SimpleRNG(42)
+    val (n1, rng2) = RNG.map2(RNG.int, RNG.doubleViaMap)((a, b) => (a, b))(rng)
+    assert(n1._1 >= Int.MinValue && n1._1 <= Int.MaxValue)
+    assert(n1._2 >= 0.0 && n1._2 < 1.0)
+    val (n2, _) = RNG.map2(RNG.int, RNG.doubleViaMap)((a, b) => (a, b))(rng2)
+    assert(n2._1 >= Int.MinValue && n2._1 <= Int.MaxValue)
+    assert(n2._2 >= 0.0 && n2._2 < 1.0)
+  }
 }

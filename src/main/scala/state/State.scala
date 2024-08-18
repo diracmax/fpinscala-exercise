@@ -61,6 +61,13 @@ object RNG {
       (f(a), rng2)
     }
 
+  def map2[A, B, C](ra: Rand[A], rb: Rand[B])(f: (A, B) => C): Rand[C] =
+    rng => {
+      val (a, rng2) = ra(rng)
+      val (b, rng3) = rb(rng2)
+      (f(a, b), rng3)
+    }
+
   def nonNegativeInt(rng: RNG): (Int, RNG) = {
     val (newInt, newRNG) = rng.nextInt
     if (newInt < 0) {
