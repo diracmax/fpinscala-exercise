@@ -14,15 +14,6 @@ case class SimpleRNG(seed: Long) extends RNG {
     (n, nextRNG)
   }
 
-  def nonNegativeInt(rng: RNG): (Int, RNG) = {
-    val (newInt, newRNG) = rng.nextInt
-    if (newInt < 0) {
-      (-(newInt+1), newRNG)
-    } else {
-      (newInt, newRNG)
-    }
-  }
-
   def double(rng: RNG): (Double, RNG) = {
     val (n, newRNG) = rng.nextInt
     (abs(n).toDouble / Int.MaxValue, newRNG)
@@ -55,4 +46,30 @@ case class SimpleRNG(seed: Long) extends RNG {
     } else {
       (Nil, rng)
     }
+}
+
+object RNG {
+  type Rand[+A] = RNG => (A, RNG)
+
+  val int: Rand[Int] = _.nextInt
+
+  def unit[A](a: A): Rand[A] = rng => (a, rng)
+
+  def map[A, B](s: Rand[A])(f: A => B): Rand[B] =
+    rng => {
+      val (a, rng2) = s(rng)
+      (f(a), rng2)
+    }
+
+  def nonNegativeInt(rng: RNG): (Int, RNG) = {
+    val (newInt, newRNG) = rng.nextInt
+    if (newInt < 0) {
+      (-(newInt+1), newRNG)
+    } else {
+      (newInt, newRNG)
+    }
+  }
+
+  def nonNegativeEven: Rand[Int] =
+    map(nonNegativeInt)(i => i - i % 2)
 }
