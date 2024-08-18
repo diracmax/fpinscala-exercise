@@ -53,6 +53,11 @@ object RNG {
 
   val int: Rand[Int] = _.nextInt
 
+  val double: Rand[Double] = rng => {
+    val (n, newRNG) = rng.nextInt
+    (abs(n).toDouble / Int.MaxValue, newRNG)
+  }
+
   def unit[A](a: A): Rand[A] = rng => (a, rng)
 
   def map[A, B](s: Rand[A])(f: A => B): Rand[B] =
@@ -81,4 +86,10 @@ object RNG {
     map(nonNegativeInt)(i => i - i % 2)
 
   def doubleViaMap: Rand[Double] = map(int)(x => abs(x).toDouble / Int.MaxValue)
+
+  def both[A, B](ra: Rand[A], rb: Rand[B]): Rand[(A, B)] = map2(ra, rb)((_, _))
+
+  val randIntDouble: Rand[(Int, Double)] = both(int, double)
+
+  val randDoubleInt: Rand[(Double, Int)] = both(double, int)
 }
