@@ -88,4 +88,13 @@ class StateTest extends AnyFunSuite {
     assert(l2.length == 5)
     assert(l2 == List(-1934589059, 1015914512, -1163632441, -94901159, 1837487774))
   }
+
+  test("Exercise 6.8 nonNegativeLessThan should return a non-negative integer less than n") {
+    val rng = SimpleRNG(42)
+    val (n1, rng2) = RNG.nonNegativeLessThan(10)(rng)
+    assert(n1 >= 0 && n1 < 10)
+    val (n2, _) = RNG.nonNegativeLessThan(10)(rng2)
+    assert(n2 >= 0 && n2 < 10)
+
+  }
 }
