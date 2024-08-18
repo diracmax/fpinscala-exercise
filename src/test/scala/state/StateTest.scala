@@ -78,4 +78,14 @@ class StateTest extends AnyFunSuite {
     assert(n2._1 >= Int.MinValue && n2._1 <= Int.MaxValue)
     assert(n2._2 >= 0.0 && n2._2 < 1.0)
   }
+
+  test("Exercise 6.7 ints should return a list of values") {
+    val rng = SimpleRNG(42)
+    val (l1, rng2) = RNG.ints(5)(rng)
+    assert(l1 == List(16159453, -1281479697, -340305902, -2015756020, 1770001318))
+    assert(l1.length == 5)
+    val (l2, _) = RNG.ints(5)(rng2)
+    assert(l2.length == 5)
+    assert(l2 == List(-1934589059, 1015914512, -1163632441, -94901159, 1837487774))
+  }
 }

@@ -1,5 +1,7 @@
 package state
 
+import state.RNG.Rand
+
 import scala.math.abs
 
 trait RNG {
@@ -92,4 +94,15 @@ object RNG {
   val randIntDouble: Rand[(Int, Double)] = both(int, double)
 
   val randDoubleInt: Rand[(Double, Int)] = both(double, int)
+
+  def sequence[A](fs: List[Rand[A]]): Rand[List[A]] =
+    rng => fs match {
+      case h :: t =>
+        val (e, r) = h(rng)
+        val (e1, r1) = sequence(t)(r)
+        (e :: e1, r1)
+      case Nil => (Nil, rng)
+    }
+
+  def ints(count: Int): Rand[List[Int]] = sequence(List.fill(count)(int))
 }
